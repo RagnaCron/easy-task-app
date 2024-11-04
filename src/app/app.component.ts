@@ -15,4 +15,8 @@ import {DUMMY_USERS} from './dummy-user';
 export class AppComponent {
   title = 'easy-task-app';
   users = DUMMY_USERS;
+
+  onSelectUser(id: string) {
+    console.log(id);
+  }
 }
