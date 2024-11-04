@@ -2,13 +2,15 @@
 
 <main>
   <ul id="users">
-    <li>
-      <app-user
-        [id]="users[0].id"
-        [avatar]="users[0].avatar"
-        [name]="users[0].name"
-        (select)="onSelectUser($event)"
-      />
-    </li>
+    @for (user of users; track user.id) {
+      <li>
+        <app-user
+          [id]="user.id"
+          [avatar]="user.avatar"
+          [name]="user.name"
+          (select)="onSelectUser($event)"
+        />
+      </li>
+    }
   </ul>
 </main>
