@@ -17,12 +17,13 @@ export class AppComponent {
   title = 'easy-task-app';
   users = DUMMY_USERS;
 
-  isUserSelected = false;
-  name: string = '';
+  user?: {
+    id: string,
+    avatar: string,
+    name: string,
+  };
 
   onSelectUser(id: string) {
-    this.isUserSelected = true;
-    // @ts-ignore
-    this.name = this.users.find(user => user.id === id).name;
+    this.user = this.users.find(user => user.id === id);
   }
 }

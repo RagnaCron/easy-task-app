@@ -8,20 +8,19 @@ import {Component, computed, EventEmitter, Input, input, Output, output} from '@
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  //@Input({required: true}) avatar!: string;
-  //@Input({required: true}) name!: string;
-  id = input.required<string>();
-  avatar = input.required<string>();
-  name = input.required<string>();
+  @Input({required: true}) user!: {
+    id: string,
+    avatar: string,
+    name: string,
+  };
 
-  //@Output() select = new EventEmitter<string>();
   select = output<string>()
 
   imagePath = computed(() => {
-    return `assets/users/${this.avatar()}`;
+    return `assets/users/${this.user.avatar}`;
   })
 
   onSelectUser() {
-    this.select.emit(this.id());
+    this.select.emit(this.user.id);
   }
 }
