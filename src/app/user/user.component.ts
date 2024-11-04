@@ -14,7 +14,7 @@ export class UserComponent {
   avatar = input.required<string>();
   name = input.required<string>();
 
-  //@Output() select = new EventEmitter();
+  //@Output() select = new EventEmitter<string>();
   select = output<string>()
 
   //get imagePath() {
@@ -26,7 +26,5 @@ export class UserComponent {
 
   onSelectUser() {
     this.select.emit(this.id());
-    this.select.emit(this.avatar());
-    this.select.emit(this.name());
   }
 }
