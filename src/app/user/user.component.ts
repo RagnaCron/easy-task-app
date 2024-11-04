@@ -17,9 +17,6 @@ export class UserComponent {
   //@Output() select = new EventEmitter<string>();
   select = output<string>()
 
-  //get imagePath() {
-  //  return `assets/users/${this.avatar()}`;
-  //}
   imagePath = computed(() => {
     return `assets/users/${this.avatar()}`;
   })
