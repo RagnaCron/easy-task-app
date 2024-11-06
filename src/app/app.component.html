@@ -11,5 +11,7 @@
 
   @if (selectedUser) {
       <app-tasks [user]="selectedUser" />
+  } @else {
+    <p>Please select a user to see their tasks!</p>
   }
 </main>
