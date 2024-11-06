@@ -1,4 +1,5 @@
 import {Component, computed, EventEmitter, Input, input, Output, output} from '@angular/core';
+import {UserModel} from './user.model';
 
 @Component({
   selector: 'app-user',
@@ -8,11 +9,7 @@ import {Component, computed, EventEmitter, Input, input, Output, output} from '@
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  @Input({required: true}) user!: {
-    id: string,
-    avatar: string,
-    name: string,
-  };
+  @Input({required: true}) user!: UserModel;
 
   select = output<string>()
 
