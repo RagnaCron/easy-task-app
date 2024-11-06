@@ -10,6 +10,7 @@ import {UserModel} from './user.model';
 })
 export class UserComponent {
   @Input({required: true}) user!: UserModel;
+  @Input({required: true}) selected: boolean = false;
 
   select = output<string>()
 
