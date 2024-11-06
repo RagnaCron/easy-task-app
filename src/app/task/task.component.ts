@@ -1,5 +1,13 @@
 import {Component, Input} from '@angular/core';
 
+interface Task {
+  summary: string;
+  dueDate: string;
+  id: string;
+  title: string;
+  userId: string;
+}
+
 @Component({
   selector: 'app-task',
   standalone: true,
@@ -8,12 +16,5 @@ import {Component, Input} from '@angular/core';
   styleUrl: './task.component.css'
 })
 export class TaskComponent {
-  @Input() task!: {
-    summary: string;
-    dueDate: string;
-    id: string;
-    title: string;
-    userId: string
-  };
-
+  @Input({ required: true }) task!: Task;
 }
