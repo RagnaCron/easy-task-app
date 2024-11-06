@@ -7,16 +7,11 @@
   </header>
 
   <ul>
-    <li>
-      <app-task />
-    </li>
-<!--    @for (task in tasks; track task.Id) {-->
-<!--      <li>-->
-<!--        <h3>{{ @task.Title }}</h3>-->
-<!--        <p>{{ @task.Description }}</p>-->
-<!--        <p>{{ @task.DueDate.ToString("d") }}</p>-->
-<!--      </li>-->
-<!--    }-->
+    @for (task of selectedUserTask; track task.id) {
+      <li>
+        <app-task/>
+      </li>
+    }
   </ul>
 </section>
 
