@@ -5,3 +5,9 @@ export interface TaskModel {
   summary: string;
   dueDate: string;
 }
+
+export interface TaskInput {
+  title: string;
+  summary: string;
+  dueDate: string;
+}
