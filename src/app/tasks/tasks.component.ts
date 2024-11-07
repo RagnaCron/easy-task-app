@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {TaskComponent} from './task/task.component';
-import {dummyTasks} from '../dummy-tasks';
 import {UserModel} from '../user/user.model';
 import {AddtaskComponent} from './addtask/addtask.component';
 import {TaskInput} from './task/task.model';
+import {TasksService} from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -18,14 +18,15 @@ import {TaskInput} from './task/task.model';
 export class TasksComponent {
   @Input({ required: true }) user?: UserModel;
   isAddingTask = false;
-  tasks = dummyTasks;
+
+  constructor(private taskService: TasksService) {}
 
   get selectedUserTask() {
-    return this.tasks.filter(task => task.userId === this.user?.id);
+    return this.taskService.getUserTasks(this.user!.id);
   }
 
   onTaskComplete(taskId: string) {
-    this.tasks = this.tasks.filter(task => task.id !== taskId);
+    this.taskService.deleteTask(taskId);
   }
 
   onStartAddTask() {
@@ -38,12 +39,6 @@ export class TasksComponent {
 
   onAddTask(taskData: TaskInput) {
     this.isAddingTask = false;
-    this.tasks.push({
-      id: new Date().getTime().toString(),
-      userId: this.user!.id,
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.dueDate,
-    });
+    this.taskService.addTask(taskData, this.user!.id);
   }
 }
