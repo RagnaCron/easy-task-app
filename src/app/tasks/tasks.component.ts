@@ -24,4 +24,7 @@ export class TasksComponent {
     return this.tasks.filter(task => task.userId === this.user?.id);
   }
 
+  onTaskComplete($event: string) {
+    this.tasks = this.tasks.filter(task => task.id !== $event);
+  }
 }
